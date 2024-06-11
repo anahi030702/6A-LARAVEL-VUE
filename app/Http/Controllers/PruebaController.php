@@ -33,18 +33,13 @@ class PruebaController extends Controller
     public function create(Request $request)
     {
         $validate = Validator::make($request->all(),[
-            "nombre" => 'required|max:30|min:3',
-            "ap_paterno" => 'required|max:50|min:4',
-            "ap_materno" => 'required|max:50|min:4'
+            "nombre" => 'required|max:30|min:3|alpha',
+            "ap_paterno" => 'required|max:50|min:4|alpha',
+            "ap_materno" => 'required|max:50|min:4|alpha'
         ]);
-        // $validated = $request->validate([
-        //     'nombre' => 'required|max:30',
-        //     'ap_paterno' => 'required|max:50',
-        //     'ap_materno' => 'required|max:50'
-        // ]);
 
             if($validate->fails()){
-                return to_route('personas.form');
+                return back()->withErrors($validate)->withInput();
             }else{
             $persona = new Persona();
             $persona->nombre = $request->input('nombre');
@@ -68,9 +63,8 @@ class PruebaController extends Controller
         return to_route('personas.inicio');
     }
 
-    public function formedit(Request $request): Response
+    public function formedit($id): Response
     {
-        $id = $request->input('id'); 
         $persona = Persona::findOrFail($id);
 
         return Inertia::render('Personas/FormEdit',['persona'=> $persona]);
@@ -88,8 +82,8 @@ class PruebaController extends Controller
         $persona = Persona::findOrFail($id);
 
         if($validate->fails()){
-            //$error= $validate->errors();
-            return Inertia::render('Personas/FormEdit',['persona' => $persona]);
+        return back()->withErrors($validate)->withInput()->with('persona', $persona);
+            // return Inertia::render('Personas/FormEdit',['persona' => $persona]);
         }else{
             $persona->nombre = $request->input('nombre');
             $persona->ap_paterno = $request->input('ap_paterno');

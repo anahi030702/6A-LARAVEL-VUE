@@ -23,6 +23,9 @@ export default {
   methods:{
     evborrar(id) {
       router.delete(`personas/borrar/${id}`);
+    },
+    evupdate(id) {
+      router.get(`personas/formedit/${id}`);
     }
   }
 }
@@ -49,7 +52,7 @@ export default {
             <th>{{ persona.ap_paterno }}</th>
             <th>{{ persona.ap_materno }}</th>
             <th class="text-warning">
-              <Link :href="'/personas/formedit?id=' + persona.id" class="text-decoration-none text-reset">Editar</Link>
+              <button class="btn btn-warning btn-sm" @click="evupdate(persona.id)">Editar</button>
             </th>
             <th>
               <button class="btn btn-danger btn-sm" @click="evborrar(persona.id)">Eliminar</button>

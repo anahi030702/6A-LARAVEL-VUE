@@ -9,6 +9,12 @@ export default {
     Head,
     router
   },
+  props:{
+    errors: {
+        type: Object,
+        require: false
+    }
+  },
   data(){
     return{
         form:{
@@ -51,8 +57,8 @@ export default {
             <label for="nombre" class="col-3 col-form-label">Nombre</label>
             <div class="col-6">
                 <input type="text" class="form-control" id="nombre" placeholder="Juan" v-model="form.nombre" required minlength="3" maxlength="30" pattern="[A-Za-z]+">
-                <div class="invalid-feedback">
-                    El nombre es obligatorio y debe tener entre 3 y 30 caracteres
+                <div v-if="errors.nombre" class="invalid-feedback">
+                    {{ errors.nombre }}
                 </div>
             </div>
         </div>
@@ -60,8 +66,8 @@ export default {
             <label for="ap_paterno" class="col-3 col-form-label">Apellido Paterno</label>
             <div class="col-6">
                 <input type="text" class="form-control" id="ap_paterno" placeholder="Perez" v-model="form.ap_paterno" required minlength="4" maxlength="50" pattern="[A-Za-z]+">
-                <div class="invalid-feedback">
-                    El apellido paterno es obligatorio y debe tener entre 4 y 30 caracteres
+                <div v-if="errors.ap_paterno" class="invalid-feedback">
+                    {{ errors.ap_paterno }}
                 </div>            
             </div>
         </div>
@@ -69,8 +75,8 @@ export default {
             <label for="ap_materno" class="col-3 col-form-label">Apellido Materno</label>
             <div class="col-6">
                 <input type="text" class="form-control" id="ap_materno" placeholder="Chavez" v-model="form.ap_materno" required minlength="4" maxlength="50" pattern="[A-Za-z]+">
-                <div class="invalid-feedback">
-                    El apellido materno es obligatorio y debe tener entre 4 y 30 caracteres
+                <div v-if="errors.ap_materno" class="invalid-feedback">
+                    {{ errors.ap_materno }}
                 </div>            
             </div>
         </div>

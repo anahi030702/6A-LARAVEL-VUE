@@ -46,7 +46,7 @@ Route::get('/personas', [PruebaController::class, 'personas'])->name('personas.i
 Route::get('/personas/form', [PruebaController::class, 'form'])->name('personas.form');
 Route::post('/personas/create', [PruebaController::class, 'create']);
 Route::delete('personas/borrar/{id}', [PruebaController::class, 'borrar']);
-Route::get('/personas/formedit', [PruebaController::class, 'formedit'])->name('personas.formedit');
+Route::get('/personas/formedit/{id}', [PruebaController::class, 'formedit'])->name('personas.formedit');
 Route::put('/personas/update', [PruebaController::class, 'update']);
 
 
