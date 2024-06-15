@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\MoviesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PruebaController;
+use App\Models\Movie;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -48,6 +50,22 @@ Route::post('/personas/create', [PruebaController::class, 'create']);
 Route::delete('personas/borrar/{id}', [PruebaController::class, 'borrar']);
 Route::get('/personas/formedit/{id}', [PruebaController::class, 'formedit'])->name('personas.formedit');
 Route::put('/personas/update', [PruebaController::class, 'update']);
+
+
+Route::get('/movies', [MoviesController::class, 'index'])->name('movies.index');
+Route::get('/movies/form', [MoviesController::class, 'form'])->name('movies.form');
+Route::post('/movies/create', [MoviesController::class, 'create']);
+Route::delete('movies/borrar/{id}', [MoviesController::class, 'delete']);
+Route::get('/movies/formedit/{id}', [MoviesController::class, 'formedit'])->name('movies.formedit');
+Route::put('/movies/update', [MoviesController::class, 'update'])->name('movies.update');
+
+Route::get('/schedules', [MoviesController::class, 'index'])->name('movies.index');
+
+
+
+
+
+
 
 
 
