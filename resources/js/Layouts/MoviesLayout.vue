@@ -32,6 +32,27 @@ import { Link} from '@inertiajs/vue3'
             <Link href="/schedules/form" class="dropdown-item text-decoration-none text-reset">Create Schedule</Link>                  
           </ul>
         </li>
+
+        
+        <li class="nav-item dropdown">
+          <Link class="nav-link dropdown-toggle fw-bold fs-5" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Screenings
+          </Link>          
+          <ul class="dropdown-menu">
+            <Link href="/screenings" class="dropdown-item text-decoration-none text-reset">View Screenings</Link>  
+            <Link href="/schedules/form" class="dropdown-item text-decoration-none text-reset">Create Screening</Link>                  
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <Link class="nav-link dropdown-toggle fw-bold fs-5" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Cinemas
+          </Link>          
+          <ul class="dropdown-menu">
+            <Link href="/cinemas" class="dropdown-item text-decoration-none text-reset">View Cinemas</Link>  
+            <Link href="/cinemas/form" class="dropdown-item text-decoration-none text-reset">Create Cinemas</Link>                  
+          </ul>
+        </li>
       </ul>
     </div>
   </div>

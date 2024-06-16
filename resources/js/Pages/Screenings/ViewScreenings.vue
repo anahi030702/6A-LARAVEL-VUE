@@ -6,7 +6,7 @@ import { Head, Link, router} from '@inertiajs/vue3';
 export default {
   data(){
     return{
-      movies:{
+      screening:{
         id: null
       }
     }
@@ -18,9 +18,9 @@ export default {
     router
   },
   props:{
-    movies : {
-      type: Object,
-      require: true
+    screenings : {
+        type: Object,
+        require: true
     }
   },
   methods:{
@@ -41,28 +41,27 @@ export default {
         <thead class="table-dark">
           <tr>
           <th>Id</th>
-          <th>Title</th>
-          <th>Director</th>
-          <th>Gender</th>
-          <th>Duration</th>
-          <th>Classification</th>
+          <th>Room_id</th>
+          <th>Movie_id</th>
+          <th>schedule_id</th>
+          <th>date</th>
           <th></th>
           <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="movie in movies">
-            <th>{{ movie.id }}</th>
-            <th>{{ movie.title }}</th>
-            <th>{{ movie.director }}</th>
-            <th>{{ movie.gender }}</th>
-            <th>{{ movie.duration }}</th>
-            <th>{{ movie.classification }}</th>
+          <tr v-for="screening in screenings">
+            <th>{{ screening.id }}</th>
+            <th>{{ screening.title }}</th>
+            <th>{{ screening.director }}</th>
+            <th>{{ screening.gender }}</th>
+            <th>{{ screening.duration }}</th>
+            <th>{{ screening.classification }}</th>
             <th class="text-warning">
-              <button class="btn btn-warning btn-sm" @click="evupdate(movie.id)">Editar</button>
+              <button class="btn btn-warning btn-sm" @click="evupdate(screening.id)">Editar</button>
             </th>
             <th>
-              <button class="btn btn-danger btn-sm" @click="evborrar(movie.id)">Eliminar</button>
+              <button class="btn btn-danger btn-sm" @click="evborrar(screening.id)">Eliminar</button>
             </th>
           </tr>
         </tbody>

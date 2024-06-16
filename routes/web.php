@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\CinemasController;
 use App\Http\Controllers\MoviesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PruebaController;
 use App\Http\Controllers\SchedulesController;
+use App\Http\Controllers\ScreeningsController;
 use App\Models\Movie;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -66,6 +68,23 @@ Route::post('/schedules/create', [SchedulesController::class, 'create']);
 Route::delete('schedules/borrar/{id}', [SchedulesController::class, 'delete']);
 Route::get('/schedules/formedit/{id}', [SchedulesController::class, 'formedit']);
 Route::put('/schedules/update', [SchedulesController::class, 'update']);
+
+Route::get('/screenings', [ScreeningsController::class, 'index'])->name('screenings.index');
+
+
+Route::get('/cinemas', [CinemasController::class, 'index'])->name('cinemas.index');
+Route::get('/cinemas/form', [CinemasController::class, 'form'])->name('cinemas.form');
+Route::post('/cinemas/create', [CinemasController::class, 'create']);
+Route::delete('cinemas/borrar/{id}', [CinemasController::class, 'delete']);
+Route::get('/cinemas/formedit/{id}', [CinemasController::class, 'formedit']);
+Route::put('/cinemas/update', [CinemasController::class, 'update']);
+
+
+
+
+
+
+
 
 
 

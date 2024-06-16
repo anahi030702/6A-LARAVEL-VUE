@@ -6,7 +6,7 @@ import { Head, Link, router} from '@inertiajs/vue3';
 export default {
   data(){
     return{
-      movies:{
+      cinema:{
         id: null
       }
     }
@@ -18,17 +18,17 @@ export default {
     router
   },
   props:{
-    movies : {
-      type: Object,
-      require: true
+    cinemas : {
+        type: Object,
+        require: true
     }
   },
   methods:{
     evborrar(id) {
-      router.delete(`movies/borrar/${id}`);
+      router.delete(`cinemas/borrar/${id}`);
     },
     evupdate(id) {
-      router.get(`movies/formedit/${id}`);
+      router.get(`cinemas/formedit/${id}`);
     }
   }
 }
@@ -41,28 +41,26 @@ export default {
         <thead class="table-dark">
           <tr>
           <th>Id</th>
-          <th>Title</th>
-          <th>Director</th>
-          <th>Gender</th>
-          <th>Duration</th>
-          <th>Classification</th>
+          <th>Name</th>
+          <th>Address</th>
+          <th>City</th>
+          <th>Phone</th>
           <th></th>
           <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="movie in movies">
-            <th>{{ movie.id }}</th>
-            <th>{{ movie.title }}</th>
-            <th>{{ movie.director }}</th>
-            <th>{{ movie.gender }}</th>
-            <th>{{ movie.duration }}</th>
-            <th>{{ movie.classification }}</th>
+          <tr v-for="cinema in cinemas">
+            <th>{{ cinema.id }}</th>
+            <th>{{ cinema.name }}</th>
+            <th>{{ cinema.address }}</th>
+            <th>{{ cinema.city }}</th>
+            <th>{{ cinema.phone }}</th>
             <th class="text-warning">
-              <button class="btn btn-warning btn-sm" @click="evupdate(movie.id)">Editar</button>
+              <button class="btn btn-warning btn-sm" @click="evupdate(cinema.id)">Editar</button>
             </th>
             <th>
-              <button class="btn btn-danger btn-sm" @click="evborrar(movie.id)">Eliminar</button>
+              <button class="btn btn-danger btn-sm" @click="evborrar(cinema.id)">Eliminar</button>
             </th>
           </tr>
         </tbody>
