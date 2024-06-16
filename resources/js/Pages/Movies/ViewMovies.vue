@@ -37,6 +37,7 @@ export default {
 <template>
     <Head title="Home"/>
     <MoviesLayout>
+      <h2 class="text-center">Movies</h2> 
       <table class="table text-center">
         <thead class="table-dark">
           <tr>

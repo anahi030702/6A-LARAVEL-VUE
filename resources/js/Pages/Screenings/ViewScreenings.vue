@@ -21,14 +21,17 @@ export default {
     screenings : {
         type: Object,
         require: true
-    }
+    },
+    room_name: String,
+    movie_name: String,
+    schedule_name: String
   },
   methods:{
     evborrar(id) {
-      router.delete(`movies/borrar/${id}`);
+      router.delete(`screenings/borrar/${id}`);
     },
     evupdate(id) {
-      router.get(`movies/formedit/${id}`);
+      router.get(`screenings/formedit/${id}`);
     }
   }
 }
@@ -37,13 +40,14 @@ export default {
 <template>
     <Head title="Home"/>
     <MoviesLayout>
+      <h2 class="text-center">Screenings</h2> 
       <table class="table text-center">
         <thead class="table-dark">
           <tr>
           <th>Id</th>
-          <th>Room_id</th>
-          <th>Movie_id</th>
-          <th>schedule_id</th>
+          <th>Room</th>
+          <th>Movie</th>
+          <th>schedule</th>
           <th>date</th>
           <th></th>
           <th></th>
@@ -52,11 +56,10 @@ export default {
         <tbody>
           <tr v-for="screening in screenings">
             <th>{{ screening.id }}</th>
-            <th>{{ screening.title }}</th>
-            <th>{{ screening.director }}</th>
-            <th>{{ screening.gender }}</th>
-            <th>{{ screening.duration }}</th>
-            <th>{{ screening.classification }}</th>
+            <th>{{ screening.room.name }}</th>
+            <th>{{ screening.movie.title }}</th>
+            <td>{{ screening.schedule.start_time }} - {{ screening.schedule.end_time }}</td>
+            <th>{{ screening.date }}</th>
             <th class="text-warning">
               <button class="btn btn-warning btn-sm" @click="evupdate(screening.id)">Editar</button>
             </th>

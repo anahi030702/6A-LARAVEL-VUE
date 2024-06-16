@@ -34,6 +34,7 @@ export default {
 <template>
     <Head title="Home"/>
     <InicioLayout>
+      <h2 class="text-center">Personas</h2> 
       <table class="table">
         <thead class="table-dark">
           <tr>

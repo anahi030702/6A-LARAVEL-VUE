@@ -6,7 +6,7 @@ import { Head, Link, router} from '@inertiajs/vue3';
 export default {
   data(){
     return{
-      cinema:{
+      room:{
         id: null
       }
     }
@@ -18,57 +18,55 @@ export default {
     router
   },
   props:{
-    cinemas : {
+    rooms : {
         type: Object,
         require: true
     }
   },
   methods:{
     evborrar(id) {
-      router.delete(`cinemas/borrar/${id}`);
+      router.delete(`rooms/borrar/${id}`);
     },
     evupdate(id) {
-      router.get(`cinemas/formedit/${id}`);
+      router.get(`rooms/formedit/${id}`);
     },
     evget(id) {
-      router.get(`cinemas/getrooms/${id}`);
+      router.get(`/rooms/getscreenings/${id}`);
     }
   }
 }
 </script>
 
 <template>
-    <Head title="View Cinema"/>
+    <Head title="Home"/>
     <MoviesLayout>
-      <h2 class="text-center">Cinemas</h2> 
+      <h2 class="text-center">Rooms</h2> 
       <table class="table text-center">
         <thead class="table-dark">
           <tr>
           <th>Id</th>
           <th>Name</th>
-          <th>Address</th>
-          <th>City</th>
-          <th>Phone</th>
+          <th>Capacity</th>
+          <th>Cinema</th>
           <th></th>
           <th></th>
           <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="cinema in cinemas">
-            <th>{{ cinema.id }}</th>
-            <th>{{ cinema.name }}</th>
-            <th>{{ cinema.address }}</th>
-            <th>{{ cinema.city }}</th>
-            <th>{{ cinema.phone }}</th>
+          <tr v-for="room in rooms">
+            <th>{{ room.id }}</th>
+            <th>{{ room.name }}</th>
+            <th>{{ room.capacity }}</th>
+            <th>{{ room.cinema.name }}</th>
             <th class="text-warning">
-              <button class="btn btn-warning btn-sm" @click="evupdate(cinema.id)">Editar</button>
+              <button class="btn btn-warning btn-sm" @click="evupdate(room.id)">Editar</button>
             </th>
             <th>
-              <button class="btn btn-danger btn-sm" @click="evborrar(cinema.id)">Eliminar</button>
+              <button class="btn btn-danger btn-sm" @click="evborrar(room.id)">Eliminar</button>
             </th>
             <th>
-              <button class="btn btn-primary btn-sm" @click="evget(cinema.id)">View Rooms</button>
+              <button class="btn btn-primary btn-sm" @click="evget(room.id)">View Screenings</button>
             </th>
           </tr>
         </tbody>

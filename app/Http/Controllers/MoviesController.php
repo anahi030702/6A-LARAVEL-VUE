@@ -18,6 +18,13 @@ class MoviesController extends Controller
         ]);
     }
 
+    public function getMovies()
+    {
+        $movies = Movie::all();
+        return response()->json(['movies' => $movies], 200);
+    }
+  
+
     public function form(): Response
     {
         return Inertia::render('Movies/FormMovie');

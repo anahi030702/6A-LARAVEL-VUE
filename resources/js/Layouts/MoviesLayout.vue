@@ -11,7 +11,43 @@ import { Link} from '@inertiajs/vue3'
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <Link href="/movies" class="nav-link text-decoration-none text-reset fw-bold fs-5">Home</Link>    
+          <Link href="/cinemas" class="nav-link text-decoration-none text-reset fw-bold fs-5">Home</Link>    
+        </li>
+        <li class="nav-item dropdown">
+          <Link class="nav-link dropdown-toggle fw-bold fs-5" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Cinemas
+          </Link>          
+          <ul class="dropdown-menu">
+            <Link href="/cinemas" class="dropdown-item text-decoration-none text-reset">View Cinemas</Link>  
+            <Link href="/cinemas/form" class="dropdown-item text-decoration-none text-reset">Create Cinema</Link>                  
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <Link class="nav-link dropdown-toggle fw-bold fs-5" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Rooms
+          </Link>          
+          <ul class="dropdown-menu">
+            <Link href="/rooms" class="dropdown-item text-decoration-none text-reset">View Rooms</Link>  
+            <Link href="/rooms/form" class="dropdown-item text-decoration-none text-reset">Create Room</Link>                  
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <Link class="nav-link dropdown-toggle fw-bold fs-5" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Screenings
+          </Link>          
+          <ul class="dropdown-menu">
+            <Link href="/screenings" class="dropdown-item text-decoration-none text-reset">View Screenings</Link>  
+            <Link href="/screenings/form" class="dropdown-item text-decoration-none text-reset">Create Screening</Link>                  
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <Link class="nav-link dropdown-toggle fw-bold fs-5" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Tickets
+          </Link>          
+          <ul class="dropdown-menu">
+            <Link href="/screenings" class="dropdown-item text-decoration-none text-reset">View Tickets</Link>  
+            <Link href="/screenings/form" class="dropdown-item text-decoration-none text-reset">Create Ticket</Link>                  
+          </ul>
         </li>
         <li class="nav-item dropdown">
           <Link class="nav-link dropdown-toggle fw-bold fs-5" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -34,25 +70,10 @@ import { Link} from '@inertiajs/vue3'
         </li>
 
         
-        <li class="nav-item dropdown">
-          <Link class="nav-link dropdown-toggle fw-bold fs-5" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Screenings
-          </Link>          
-          <ul class="dropdown-menu">
-            <Link href="/screenings" class="dropdown-item text-decoration-none text-reset">View Screenings</Link>  
-            <Link href="/schedules/form" class="dropdown-item text-decoration-none text-reset">Create Screening</Link>                  
-          </ul>
-        </li>
+      
 
-        <li class="nav-item dropdown">
-          <Link class="nav-link dropdown-toggle fw-bold fs-5" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Cinemas
-          </Link>          
-          <ul class="dropdown-menu">
-            <Link href="/cinemas" class="dropdown-item text-decoration-none text-reset">View Cinemas</Link>  
-            <Link href="/cinemas/form" class="dropdown-item text-decoration-none text-reset">Create Cinemas</Link>                  
-          </ul>
-        </li>
+        
+        
       </ul>
     </div>
   </div>

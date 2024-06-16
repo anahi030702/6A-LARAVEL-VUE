@@ -17,6 +17,19 @@ class CinemasController extends Controller
         ]);
     }
 
+    public function prueba()
+    {
+        $cinemas = Cinema::all();
+        return response()->json(['cinemas' => $cinemas], 200);
+    }
+
+
+    public function getRoomsByCinema(Cinema $cinema)
+    {
+        $rooms = $cinema->rooms; 
+        return response()->json(['rooms' => $rooms], 200);
+    }
+    
     public function form(): Response
     {
         return Inertia::render('Cinemas/FormCinema');

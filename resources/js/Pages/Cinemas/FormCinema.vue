@@ -51,8 +51,8 @@ export default {
 
 <template>
     <MoviesLayout>
-        <Head title="Create"/>
-        <form class="row g-3 needs-validation" novalidate  @submit.prevent="evguardar">
+        <Head title="Create Cinema"/>
+        <form class="row needs-validation" novalidate  @submit.prevent="evguardar">
         <div class="row mb-2">
             <label for="name" class="col-3 col-form-label">Name</label>
             <div class="col-6">

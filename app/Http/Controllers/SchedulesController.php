@@ -17,6 +17,12 @@ class SchedulesController extends Controller
         ]);
     }
 
+    public function getSchedules()
+    {
+        $schedules = Schedule::all();
+        return response()->json(['schedules' => $schedules], 200);
+    }
+
     public function form(): Response
     {
         return Inertia::render('Schedules/FormSchedule');

@@ -57,7 +57,7 @@ export default {
 <template>
     <MoviesLayout>
         <Head title="Update"/>
-        <form class="row g-3 needs-validation" novalidate @submit.prevent="evactualizar">
+        <form class="row g needs-validation" novalidate @submit.prevent="evactualizar">
         <div class="row mb-2">
             <label for="name" class="col-3 col-form-label">Name</label>
             <div class="col-6">
