@@ -3,6 +3,7 @@
 use App\Http\Controllers\MoviesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PruebaController;
+use App\Http\Controllers\SchedulesController;
 use App\Models\Movie;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -59,7 +60,15 @@ Route::delete('movies/borrar/{id}', [MoviesController::class, 'delete']);
 Route::get('/movies/formedit/{id}', [MoviesController::class, 'formedit'])->name('movies.formedit');
 Route::put('/movies/update', [MoviesController::class, 'update'])->name('movies.update');
 
-Route::get('/schedules', [MoviesController::class, 'index'])->name('movies.index');
+Route::get('/schedules', [SchedulesController::class, 'index'])->name('schedules.index');
+Route::get('/schedules/form', [SchedulesController::class, 'form'])->name('schedules.form');
+Route::post('/schedules/create', [SchedulesController::class, 'create']);
+Route::delete('schedules/borrar/{id}', [SchedulesController::class, 'delete']);
+Route::get('/schedules/formedit/{id}', [SchedulesController::class, 'formedit']);
+Route::put('/schedules/update', [SchedulesController::class, 'update']);
+
+
+
 
 
 

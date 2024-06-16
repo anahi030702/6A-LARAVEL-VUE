@@ -28,8 +28,8 @@ import { Link} from '@inertiajs/vue3'
             Schedules
           </Link>          
           <ul class="dropdown-menu">
-            <Link href="/movies" class="dropdown-item text-decoration-none text-reset">View Schedules</Link>  
-            <Link href="/movies/form" class="dropdown-item text-decoration-none text-reset">Create Schedule</Link>                  
+            <Link href="/schedules" class="dropdown-item text-decoration-none text-reset">View Schedules</Link>  
+            <Link href="/schedules/form" class="dropdown-item text-decoration-none text-reset">Create Schedule</Link>                  
           </ul>
         </li>
       </ul>

@@ -9,7 +9,10 @@ export default {
     router
 
   }, props:{
-    persona : Array,
+    persona : {
+        type: Object,
+        require: true
+    },
     errors: {
         type: Object,
         require: false

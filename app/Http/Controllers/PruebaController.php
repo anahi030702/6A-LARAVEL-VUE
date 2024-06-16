@@ -27,7 +27,7 @@ class PruebaController extends Controller
 
     public function form(): Response
     {
-        return Inertia::render('Personas/form');
+        return Inertia::render('Personas/formPersona');
     }    
 
     public function create(Request $request)
@@ -67,7 +67,7 @@ class PruebaController extends Controller
     {
         $persona = Persona::findOrFail($id);
 
-        return Inertia::render('Personas/FormEdit',['persona'=> $persona]);
+        return Inertia::render('Personas/EditPersona',['persona'=> $persona]);
     } 
 
     public function update(Request $request){

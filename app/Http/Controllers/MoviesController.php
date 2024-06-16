@@ -20,7 +20,7 @@ class MoviesController extends Controller
 
     public function form(): Response
     {
-        return Inertia::render('Movies/Form');
+        return Inertia::render('Movies/FormMovie');
     } 
 
     public function create(Request $request)
@@ -29,7 +29,7 @@ class MoviesController extends Controller
             "title" => 'required|max:50|min:2',
             "director" => 'required|max:50|min:3',
             "gender" => 'required|max:50|min:3',
-            "duration" => 'required|integer|max:250',
+            "duration" => 'required|integer|max:250|min:90',
             "classification" => 'required|max:10'
         ]);
 
@@ -63,7 +63,7 @@ class MoviesController extends Controller
     {
         $movie = Movie::findOrFail($id);
 
-        return Inertia::render('Movies/FormEdit',['movie'=> $movie]);
+        return Inertia::render('Movies/EditMovie',['movie'=> $movie]);
     } 
 
     public function update(Request $request){
@@ -72,15 +72,17 @@ class MoviesController extends Controller
             "title" => 'required|max:50|min:2',
             "director" => 'required|max:50|min:3',
             "gender" => 'required|max:50|min:3',
-            "duration" => 'required|integer|max:250',
+            "duration" => 'required|integer|max:250|min:90',
             "classification" => 'required|max:10'
         ]);
 
         $id= $request->input('id');
         $movie = Movie::findOrFail($id);
 
+
         if($validate->fails()){
         return back()->withErrors($validate)->withInput()->with('movie', $movie);
+        // return $validate->errors();
         }else{
             $movie->title = $request->input('title');
             $movie->director = $request->input('director');
@@ -88,7 +90,7 @@ class MoviesController extends Controller
             $movie->duration = $request->input('duration');
             $movie->classification = $request->input('classification');
             $movie->save();   
-    
+            
             return to_route('movies.index');
         }
 
