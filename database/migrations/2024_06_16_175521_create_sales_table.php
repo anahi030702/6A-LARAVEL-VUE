@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tickets', function (Blueprint $table) {
+        Schema::create('sales', function (Blueprint $table) {
             $table->id();
             $table->integer('seats')->length(3);
-            $table->double('price', 4, 2);
+            $table->double('price', 8, 2);
             $table->foreignId('screening_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tickets');
+        Schema::dropIfExists('sales');
     }
 };

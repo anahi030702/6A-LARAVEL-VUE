@@ -16,4 +16,9 @@ class Room extends Model
         return $this->belongsTo(Cinema::class);
     }
 
+    public function screenings()
+{
+    return $this->hasMany(Screening::class);
+}
+
 }

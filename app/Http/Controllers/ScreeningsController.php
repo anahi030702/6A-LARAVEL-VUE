@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cinema;
 use App\Models\Movie;
 use App\Models\Room;
 use App\Models\Schedule;
@@ -31,6 +32,14 @@ class ScreeningsController extends Controller
             'screenings' => $screenings
         ]);
     }
+    public function getScreeningsByRoom(Room $room)
+    {
+        $screenings = $room->screenings()->with(['movie', 'schedule'])->get();
+        return response()->json(['screenings' => $screenings], 200);
+    }
+    
+
+    
 
     public function form(): Response
     {

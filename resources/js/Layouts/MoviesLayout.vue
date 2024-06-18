@@ -42,11 +42,11 @@ import { Link} from '@inertiajs/vue3'
         </li>
         <li class="nav-item dropdown">
           <Link class="nav-link dropdown-toggle fw-bold fs-5" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Tickets
+            Sales
           </Link>          
           <ul class="dropdown-menu">
-            <Link href="/screenings" class="dropdown-item text-decoration-none text-reset">View Tickets</Link>  
-            <Link href="/screenings/form" class="dropdown-item text-decoration-none text-reset">Create Ticket</Link>                  
+            <Link href="/sales" class="dropdown-item text-decoration-none text-reset">View Sales</Link>  
+            <Link href="/sales/form" class="dropdown-item text-decoration-none text-reset">Create Sale</Link>                  
           </ul>
         </li>
         <li class="nav-item dropdown">

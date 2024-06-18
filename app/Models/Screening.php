@@ -28,6 +28,6 @@ class Screening extends Model
 
     public function tickets()
     {
-        return $this->hasMany(Ticket::class);
+        return $this->hasMany(Sale::class);
     }
 }

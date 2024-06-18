@@ -5,6 +5,7 @@ use App\Http\Controllers\MoviesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PruebaController;
 use App\Http\Controllers\RoomsController;
+use App\Http\Controllers\SalesController;
 use App\Http\Controllers\SchedulesController;
 use App\Http\Controllers\ScreeningsController;
 use App\Models\Movie;
@@ -79,7 +80,6 @@ Route::get('/screenings/formedit/{id}', [ScreeningsController::class, 'formedit'
 Route::put('/screenings/update', [ScreeningsController::class, 'update']);
 
 
-Route::get('/cinemas/{cinema}/rooms', [CinemasController::class, 'getRoomsByCinema']);
 Route::get('/cinemas/prueba', [CinemasController::class, 'prueba']);
 Route::get('/cinemas', [CinemasController::class, 'index'])->name('cinemas.index');
 Route::get('/cinemas/form', [CinemasController::class, 'form'])->name('cinemas.form');
@@ -95,10 +95,21 @@ Route::delete('rooms/borrar/{id}', [RoomsController::class, 'delete']);
 Route::get('/rooms/formedit/{id}', [RoomsController::class, 'formedit']);
 Route::put('/rooms/update', [RoomsController::class, 'update']);
 
+Route::get('/sales', [SalesController::class, 'index'])->name('sales.index');
+Route::get('/sales/form', [SalesController::class, 'form'])->name('sales.form');
+Route::post('/sales/create', [SalesController::class, 'create']);
+Route::delete('sales/borrar/{id}', [SalesController::class, 'delete']);
+Route::get('/sales/formedit/{id}', [SalesController::class, 'formedit']);
+
+
 
 
 Route::get('/cinemas/getrooms/{id}', [RoomsController::class, 'getrooms']);
 Route::get('/rooms/getscreenings/{id}', [ScreeningsController::class, 'getscreenings']);
+Route::get('/cinemas/{cinema}/rooms', [CinemasController::class, 'getRoomsByCinema']);
+Route::get('/cinemas/{room}/screenings', [ScreeningsController::class, 'getScreeningsByRoom']);
+
+
 
 
 

@@ -5,15 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Ticket extends Model
+class Sale extends Model
 {
     use HasFactory;
 
-    protected $table = 'tickets';
+    protected $table = 'sales';
 
     public function screening()
     {
         return $this->belongsTo(Screening::class);
     }
-
 }
