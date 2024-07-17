@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Persona;
+use Illuminate\Support\Facades\Validator;
+
 
 class PersonaController extends Controller
 {
@@ -14,17 +16,22 @@ class PersonaController extends Controller
 
     public function create(Request $request){
 
-        $nombre = $request->input('nombre');
-        $ap_paterno = $request->input('ap_paterno');
-        $ap_materno = $request->input('ap_materno');
+        $validate = Validator::make($request->all(),[
+            "nombre" => 'required|max:30|min:3|alpha',
+            "ap_paterno" => 'required|max:50|min:4|alpha',
+            "ap_materno" => 'required|max:50|min:4|alpha'
+        ]);
 
-        $persona = new Persona();
-        $persona->nombre = $nombre;
-        $persona->ap_paterno = $ap_paterno;
-        $persona->ap_materno = $ap_materno;
-        $persona->save();
-
-        return redirect('/personas')->with('status', '¡REGISTRO EXITOSO!');
+        if($validate->fails()){
+            return back()->withErrors($validate)->withInput();
+        }else{
+            $persona = new Persona();
+            $persona->nombre = $request->nombre;
+            $persona->ap_paterno = $request->ap_paterno;
+            $persona->ap_materno = $request->ap_materno;
+            $persona->save();
+            return redirect('/inicio')->with('status', '¡REGISTRO EXITOSO!');
+        }
 
     }
 
@@ -32,16 +39,14 @@ class PersonaController extends Controller
         return view('persona.formcreate');
     }
 
-    public function viewdata(Request $request){
-        $id = $request->input('id');
-        $persona = Persona::findOrFail($id);
+    // public function viewdata($id){
+    //     $persona = Persona::findOrFail($id);
 
-        return view('persona.viewdata', 
-            ["nombre"=>$persona->nombre, "ap_paterno"=>$persona->ap_paterno, "ap_materno"=>$persona->ap_materno, "id"=>$id]);
-    }
+    //     return view('persona.viewdata', 
+    //         ["nombre"=>$persona->nombre, "ap_paterno"=>$persona->ap_paterno, "ap_materno"=>$persona->ap_materno, "id"=>$id]);
+    // }
 
-    public function viewupdate(Request $request){
-        $id = $request->input('id');
+    public function viewupdate($id){
         $persona = Persona::findOrFail($id);
        
         return view('persona.updatedata',
@@ -50,30 +55,31 @@ class PersonaController extends Controller
 
     public function update(Request $request){
 
-        $id = $request->input('id');
-        $nombre = $request->input('nombre');
-        $ap_paterno = $request->input('ap_paterno');
-        $ap_materno = $request->input('ap_materno');
+        $validate = Validator::make($request->all(),[
+            "nombre" => 'required|max:30|min:3|alpha',
+            "ap_paterno" => 'required|max:50|min:4|alpha',
+            "ap_materno" => 'required|max:50|min:4|alpha'
+        ]);
 
-        $persona = Persona::findOrFail($id);
+        if($validate->fails()){
+            return back()->withErrors($validate)->withInput();
+        }else{
+            $persona = Persona::findOrFail($request->id);
 
-        $persona->nombre = $nombre;
-        $persona->ap_paterno = $ap_paterno;
-        $persona->ap_materno = $ap_materno;
+            $persona->nombre = $request->nombre;
+            $persona->ap_paterno = $request->ap_paterno;
+            $persona->ap_materno = $request->ap_materno;
 
-        $persona->save();
+            $persona->save();
 
-        return redirect('/personas/viewdata?id=' . $persona->id)
-        ->with('status', '¡ACTUALIZACION EXITOSA!');
-
+            return redirect('/inicio');
+        }
     }
 
-    public function delete(Request $request){
-        $id = $request->input('id');
+    public function delete($id){
         $persona = Persona::findOrFail($id);
         $persona->delete();
 
-        return redirect('/personas')->with('status', '¡PERSONA BORRADA EXITOSAMENTE!');
-
+        return redirect('/inicio');
     }
 }

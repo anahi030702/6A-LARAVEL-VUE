@@ -31,7 +31,7 @@ export default {
       router.delete(`screenings/borrar/${id}`);
     },
     evupdate(id) {
-      router.get(`screenings/formedit/${id}`);
+      router.get(`/screenings/formedit/${id}`);
     }
   }
 }

@@ -1,29 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-@if (session('status'))
+@extends('Layouts.layout-crud')
+<!-- @if (session('status'))
     <div class="alert alert-success">
-       <h2 style="color: green;">{{ session('status') }}</h2> 
+       <h2>{{ session('status') }}</h2> 
     </div>
-@endif
+@endif -->
 
-<form method="GET" action="/personas/create/form">
-    @csrf
- 
-    <button>Agregar persona</button>
-    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-</form>
-<br>
-    <table>
+@section('titulo', 'Inicio')
+
+@section('main')
+    <table class="table">
         <thead>
-            <th>Nombre</th>
-            <th>Apellido Paterno</th>
-            <th>Apellido Materno</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido Paterno</th>
+            <th scope="col">Apellido Materno</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
         </thead>
         <tbody>
             @foreach ( $personas as $persona )
@@ -31,10 +22,22 @@
                 <td>{{$persona->nombre}}</td>
                 <td>{{$persona->ap_paterno}}</td>
                 <td>{{$persona->ap_materno}}</td>
+                <td>
+                    <a href="/personas/formedit/{{ $persona->id }}">
+                    <button class="btn btn-warning">Editar</button>
+                    </a>
+                </td>
+                <td>
+                    <form method="POST" action="/personas/borrar/{{ $persona->id }}">
+                        @csrf
+                        @method('delete')
+                        <button class="btn btn-danger">Eliminar</button>
+                    </form>
+                </td>
+
 
                 <form method="GET" action="/personas/viewdata">
                 @csrf
-                <td><button>Ver persona</button></td>
                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                 <input type="hidden" name="id" value="{{$persona->id}}" />
                 <input type="hidden" name="nombre" value="{{$persona->nombre}}" />
@@ -47,6 +50,6 @@
         @endforeach
         </tbody>
     </table>
+@endsection
     
-</body>
-</html>
+    

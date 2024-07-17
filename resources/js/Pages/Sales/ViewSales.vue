@@ -25,10 +25,10 @@ export default {
   },
   methods:{
     evborrar(id) {
-      router.delete(`/sales/borrar/${id}`);
+      router.delete(`sales/borrar/${id}`);
     },
     evupdate(id) {
-      router.get(`movies/formedit/${id}`);
+      router.get(`sales/formedit/${id}`);
     }
   }
 }

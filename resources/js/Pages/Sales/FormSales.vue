@@ -72,6 +72,7 @@ export default {
     'form.cinema_id': function(newVal) {
       if (newVal) {
         this.loadRooms(newVal); 
+        this.loadScreenings(newVal); 
       }
     },
     'form.room_id': function(newVal) {
